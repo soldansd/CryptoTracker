@@ -13,46 +13,52 @@ struct CoinRowView: View {
     
     var body: some View {
         
-        HStack(spacing: 20) {
+        HStack {
             Text("\(coin.marketCapRank)")
+                .frame(width: 35, alignment: .leading)
                 .foregroundStyle(.secondary)
+                .lineLimit(1)
             
-            HStack {
-                
-                AsyncImage(url: URL(string: coin.image)) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .clipShape(Circle())
-                } placeholder: {
-                    ProgressView()
-                        .frame(width: 30, height: 30)
-                }
-                
-                VStack(alignment: .leading) {
-                    Text(coin.symbol.uppercased())
-                        .font(.headline)
-                    Text(coin.marketCap.toAbbreviationString())
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
+            CoinLogoImageView(urlString: coin.image)
+                .frame(width: 30, height: 30)
+            
+            VStack(alignment: .leading) {
+                Text(coin.symbol.uppercased())
+                    .font(.headline)
+                Text(coin.marketCap.toAbbreviationString())
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
-            
-            
             
             Spacer()
             
             Text(coin.currentPrice.toPriceString())
+                .padding(.trailing, 3)
                 .font(.headline)
                 .lineLimit(1)
             
+            
             Text(coin.priceChangePercentage24H.toPercentString())
-                .font(.footnote)
-                .frame(width: 90, alignment: .trailing)
+                .font(.system(size: 15))
                 .lineLimit(1)
+                .padding(5)
+                .background(percentageColor.opacity(0.12))
+                .foregroundStyle(percentageColor)
+                .clipShape(RoundedRectangle(cornerRadius: 7))
+                .frame(width: 90, alignment: .trailing)
+                
         }
-        .padding()
+        .padding(8)
+    }
+    
+    private var percentageColor: Color {
+        if coin.priceChangePercentage24H == 0 {
+            return .secondary
+        } else if coin.priceChangePercentage24H > 0 {
+            return .green
+        } else  {
+            return .red
+        }
     }
 }
 

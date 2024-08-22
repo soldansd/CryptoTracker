@@ -16,8 +16,8 @@ final class NetworkManager {
     
     private init() {}
     
-    func getCoinsList(count: Int, completionHandler: @escaping ([Coin]) -> Void) {
-        let urlString = baseURL + "/coins/markets?vs_currency=usd&per_page=\(count)&x_cg_demo_api_key=\(APICredentials.API_KEY)"
+    func getCoinsList(amount: Int, completionHandler: @escaping ([Coin]) -> Void) {
+        let urlString = baseURL + "/coins/markets?vs_currency=usd&per_page=\(amount)&x_cg_demo_api_key=\(APICredentials.API_KEY)"
         guard let url = URL(string: urlString) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in

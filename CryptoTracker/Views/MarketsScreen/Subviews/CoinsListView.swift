@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CoinsListView: View {
     
-    @ObservedObject var marketsVM: MarketsViewModel
+    @EnvironmentObject var marketsVM: MarketsViewModel
     
     var body: some View {
+        
+        SortBarView()
         
         ScrollView(.vertical, showsIndicators: true) {
             LazyVStack {
@@ -25,5 +27,6 @@ struct CoinsListView: View {
 }
 
 #Preview {
-    CoinsListView(marketsVM: MarketsViewModel(forPreviews: PreviewsMockData.COINS))
+    CoinsListView()
+        .environmentObject(MarketsViewModel(forPreviews: PreviewsMockData.COINS))
 }

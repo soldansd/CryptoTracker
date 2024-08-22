@@ -12,10 +12,18 @@ struct MarketsView: View {
     @StateObject var marketsVM = MarketsViewModel()
     
     var body: some View {
-        CoinsListView(marketsVM: marketsVM)
+        
+        ScrollView {
+            
+            
+            CoinsListView()
+                .environmentObject(marketsVM)
+        
+        }
+        
     }
 }
 
 #Preview {
-    MarketsView()
+    MarketsView(marketsVM: MarketsViewModel(forPreviews: PreviewsMockData.COINS))
 }
