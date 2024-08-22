@@ -13,6 +13,8 @@ struct CoinsListView: View {
     
     var body: some View {
         
+        CoinsAmountFilterBarView()
+        
         SortBarView()
         
         ScrollView(.vertical, showsIndicators: true) {

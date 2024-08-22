@@ -10,35 +10,24 @@ import SwiftUI
 struct CoinsAmountFilterBarView: View {
     
     @EnvironmentObject var marketsVM: MarketsViewModel
+    @State private var lastTappedButton = 1
+    private var buttonTitles = [50, 100, 150, 200, 250]
     
     var body: some View {
-        HStack(spacing: 5) {
+        HStack(spacing: 15) {
             Text("Top: ")
+                .font(.headline)
             
-            Spacer()
-            
-            CoinsAmountButtonView(tittle: "50") {
-                
-            }
-            
-            CoinsAmountButtonView(tittle: "100") {
-                
-            }
-            
-            CoinsAmountButtonView(tittle: "150") {
-                
-            }
-            
-            CoinsAmountButtonView(tittle: "200") {
-                
-            }
-            
-            CoinsAmountButtonView(tittle: "250") {
-                
+            ForEach(buttonTitles.indices, id: \.self) { index in
+                CoinsAmountButtonView(tittle: "\(buttonTitles[index])") {
+                    self.lastTappedButton = index
+                    marketsVM.fetchCoins(amount: buttonTitles[index])
+                    marketsVM.sortOption = .marketCapRankAscending
+                }
+                .opacity(lastTappedButton == index ? 1.0 : 0.5)
             }
             
             Spacer()
-
         }
         .frame(maxWidth: .infinity)
         .lineLimit(1)

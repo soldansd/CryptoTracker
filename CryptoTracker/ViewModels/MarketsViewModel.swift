@@ -41,9 +41,13 @@ final class MarketsViewModel: ObservableObject {
     
     private func sortCoins() {
         switch sortOption {
-        case .marketCapDescending, .marketCapRankDescending:
+        case.marketCapRankDescending:
+            sort(by: \.marketCapRank, order: .descending)
+        case.marketCapRankAscending:
+            sort(by: \.marketCapRank, order: .ascending)
+        case .marketCapDescending:
             sort(by: \.marketCap, order: .descending)
-        case .marketCapAscending, .marketCapRankAscending:
+        case .marketCapAscending:
             sort(by: \.marketCap, order: .ascending)
         case .priceDescending:
             sort(by: \.currentPrice, order: .descending)
@@ -62,7 +66,7 @@ final class MarketsViewModel: ObservableObject {
         
         func sort<Value>(by keyPath: KeyPath<Coin, Value>, order: SortOrder) where Value: Comparable {
             if case .descending = order {
-                coins.sort { $0[keyPath: keyPath] > $1[keyPath: keyPath] }
+                 coins.sort { $0[keyPath: keyPath] > $1[keyPath: keyPath]  }
             } else {
                 coins.sort { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
             }

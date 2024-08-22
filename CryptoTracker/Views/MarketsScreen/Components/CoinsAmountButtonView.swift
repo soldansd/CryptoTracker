@@ -19,12 +19,15 @@ struct CoinsAmountButtonView: View {
             Text(tittle)
                 .font(.headline)
                 .padding(8)
-                .background(.secondary)
+                .background(.regularMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 7))
         }
+        .buttonStyle(.plain)
     }
 }
 
 #Preview {
-    CoinsAmountButtonView(tittle: "100", action: {})
+    HStack {
+        CoinsAmountButtonView(tittle: "100", action: {})
+    }
 }

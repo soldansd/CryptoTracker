@@ -12,14 +12,8 @@ struct MarketsView: View {
     @StateObject var marketsVM = MarketsViewModel()
     
     var body: some View {
-        
-        ScrollView {
-            
-            
-            CoinsListView()
-                .environmentObject(marketsVM)
-        
-        }
+        CoinsListView()
+            .environmentObject(marketsVM)
         
     }
 }
