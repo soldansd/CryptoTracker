@@ -13,7 +13,7 @@ struct Coin: Decodable, Identifiable {
     let currentPrice: Double
     let marketCapRank: Int
     let marketCap, fullyDilutedValuation, totalVolume: Double?
-    let priceChange24H, priceChangePercentage24H: Double
+    let priceChange24H, priceChangePercentage24H: Double?
     let high24H, low24H, marketCapChange24H, marketCapChangePercentage24H, circulatingSupply, totalSupply: Double?
     let maxSupply: Double?
     let ath, athChangePercentage: Double?
