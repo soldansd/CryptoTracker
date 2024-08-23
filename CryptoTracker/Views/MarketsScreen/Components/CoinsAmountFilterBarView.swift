@@ -11,7 +11,7 @@ struct CoinsAmountFilterBarView: View {
     
     @EnvironmentObject var marketsVM: MarketsViewModel
     @State private var lastTappedButton = 1
-    private var buttonTitles = [50, 100, 150, 200, 250]
+    private var buttonTitles = [50, MarketsViewModel.defaultCoinsAmount, 150, 200, 250]
     
     var body: some View {
         HStack(spacing: 15) {
@@ -22,9 +22,9 @@ struct CoinsAmountFilterBarView: View {
                 CoinsAmountButtonView(tittle: "\(buttonTitles[index])") {
                     self.lastTappedButton = index
                     marketsVM.fetchCoins(amount: buttonTitles[index])
-                    marketsVM.sortOption = .marketCapRankAscending
+                    marketsVM.sortOption = .marketCapDescending
                 }
-                .opacity(lastTappedButton == index ? 1.0 : 0.5)
+                .opacity(lastTappedButton == index ? 1.0 : 0.4)
             }
             
             Spacer()

@@ -19,7 +19,7 @@ struct CoinsAmountButtonView: View {
             Text(tittle)
                 .font(.headline)
                 .padding(8)
-                .background(.regularMaterial)
+                .background(.gray.opacity(0.45))
                 .clipShape(RoundedRectangle(cornerRadius: 7))
         }
         .buttonStyle(.plain)

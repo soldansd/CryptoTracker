@@ -9,7 +9,10 @@ import Foundation
 
 final class MarketsViewModel: ObservableObject {
     
+    static let defaultCoinsAmount = 100
+    
     @Published var coins: [Coin] = []
+    @Published var marketData: MarketData?
     @Published var sortOption: SortOption = .marketCapDescending {
         didSet {
             sortCoins()
@@ -17,7 +20,8 @@ final class MarketsViewModel: ObservableObject {
     }
     
     init() {
-        fetchCoins(amount: 100)
+        fetchCoins(amount: MarketsViewModel.defaultCoinsAmount)
+        fetchMarketData()
     }
     
     init(forPreviews coins: [Coin]) {
@@ -35,6 +39,14 @@ final class MarketsViewModel: ObservableObject {
         NetworkManager.shared.getCoinsList(amount: amount) { coins in
             DispatchQueue.main.async {
                 self.coins = coins
+            }
+        }
+    }
+    
+    func fetchMarketData() {
+        NetworkManager.shared.getMarketData { market in
+            DispatchQueue.main.async {
+                self.marketData = market?.data
             }
         }
     }
