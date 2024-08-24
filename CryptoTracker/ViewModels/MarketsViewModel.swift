@@ -12,7 +12,7 @@ final class MarketsViewModel: ObservableObject {
     static let defaultCoinsAmount = 100
     
     @Published var coins: [Coin] = []
-    @Published var marketData: MarketData?
+    @Published var marketData: Market.MarketData?
     @Published var sortOption: SortOption = .marketCapDescending {
         didSet {
             sortCoins()

@@ -24,10 +24,10 @@ final class NetworkManager {
             case .success(let success):
                 completionHandler(success)
             case .failure(let failure as NetworkError):
-                print(failure.description + "in getMarketData")
+                print("DEBUG:" + failure.description + " in getMarketData")
                 completionHandler([])
             case .failure(let failure):
-                print(failure.localizedDescription + "in getMarketData")
+                print("DEBUG: \(failure) in getMarketData")
                 completionHandler([])
             }
         }
@@ -42,10 +42,27 @@ final class NetworkManager {
             case .success(let success):
                 completionHandler(success)
             case .failure(let failure as NetworkError):
-                print(failure.description + "in getMarketData")
+                print("DEBUG:" + failure.description + " in getMarketData")
                 completionHandler(nil)
             case .failure(let failure):
-                print(failure.localizedDescription + "in getMarketData")
+                print("DEBUG: \(failure) in getMarketData")
+                completionHandler(nil)
+            }
+        }
+    }
+    
+    func getCoinDetail(id: String, completionHandler: @escaping (CoinDetail?) -> Void) {
+        let urlString = "https://api.coingecko.com/api/v3/coins/\(id)?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=true&x_cg_demo_api_key=\(APICredentials.API_KEY)"
+        
+        getRequest(urlString: urlString) { (result: Result<CoinDetail, Error>) in
+            switch result {
+            case .success(let success):
+                completionHandler(success)
+            case .failure(let failure as NetworkError):
+                print("DEBUG:" + failure.description + " in getCoin id:" + id)
+                completionHandler(nil)
+            case .failure(let failure):
+                print("DEBUG: \(failure) in getCoin id: " + id)
                 completionHandler(nil)
             }
         }

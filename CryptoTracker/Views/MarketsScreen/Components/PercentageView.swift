@@ -12,7 +12,7 @@ struct PercentageView: View {
     let percentage: Double
     
     var body: some View {
-        Text(percentage.toPercentString())
+        Text(percentage == 0 ? "—" : percentage.toPercentString())
             .font(.system(size: 15))
             .lineLimit(1)
             .padding(5)
@@ -34,7 +34,7 @@ struct PercentageView: View {
 
 #Preview {
     VStack {
-        PercentageView(percentage: 2.04)
+        PercentageView(percentage: 0)
         PercentageView(percentage: -3.58)
     }
 }

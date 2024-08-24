@@ -12,12 +12,13 @@ struct MarketsView: View {
     @StateObject var marketsVM = MarketsViewModel()
     
     var body: some View {
-        
-        VStack {
-            MarketDataPanelView()
-            CoinsListView()
+        NavigationStack {
+            VStack {
+                MarketDataPanelView()
+                CoinsListView()
+            }
+            .environmentObject(marketsVM)
         }
-        .environmentObject(marketsVM)
     }
 }
 

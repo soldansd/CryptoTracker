@@ -17,7 +17,7 @@ struct MarketDataPanelView: View {
             VStack(alignment: .leading, spacing: 5) {
                 MarketDataICellHeaderView(
                     title: "Market Cap",
-                    value: marketsVM.marketData?.marketCap?.toAbbreviationString() ?? "—"
+                    value: marketsVM.marketData?.totalMarketCap["usd"]?.toAbbreviationString() ?? "—"
                 )
                 
                 PercentageView(percentage: marketsVM.marketData?.marketCapChangePercentage24HUsd ?? 0)
@@ -29,7 +29,7 @@ struct MarketDataPanelView: View {
             
             MarketDataICellHeaderView(
                 title: "Volume",
-                value: marketsVM.marketData?.volume?.toAbbreviationString() ?? "—"
+                value: marketsVM.marketData?.totalVolume["usd"]?.toAbbreviationString() ?? "—"
             )
             
             Rectangle()
@@ -37,7 +37,7 @@ struct MarketDataPanelView: View {
                 .frame(width: 1)
             
             VStack(alignment: .leading, spacing: 8) {
-                MarketDataICellHeaderView(title: "Dominance", value: marketsVM.marketData?.dominance?.toPercentString() ?? "—")
+                MarketDataICellHeaderView(title: "Dominance", value: marketsVM.marketData?.marketCapPercentage["btc"]?.toPercentString() ?? "—")
                 
                 HStack {
                     Image("bitcoinIcon")

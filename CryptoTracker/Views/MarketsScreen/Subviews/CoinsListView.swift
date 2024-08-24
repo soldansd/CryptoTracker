@@ -20,7 +20,10 @@ struct CoinsListView: View {
         ScrollView(.vertical, showsIndicators: true) {
             LazyVStack {
                 ForEach(marketsVM.coins) { coin in
-                    CoinRowView(coin: coin)
+                    NavigationLink(destination: CoinDetailView(id: coin.id)) {
+                        CoinRowView(coin: coin)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
         }
@@ -29,6 +32,8 @@ struct CoinsListView: View {
 }
 
 #Preview {
-    CoinsListView()
-        .environmentObject(MarketsViewModel(forPreviews: PreviewsMockData.COINS))
+    NavigationStack {
+        CoinsListView()
+            .environmentObject(MarketsViewModel(forPreviews: PreviewsMockData.COINS))
+    }
 }
