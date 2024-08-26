@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoinsListView: View {
     
-    @EnvironmentObject var marketsVM: MarketsViewModel
+    @EnvironmentObject var marketsVM: CoinsListViewModel
     
     var body: some View {
         
@@ -27,13 +27,15 @@ struct CoinsListView: View {
                 }
             }
         }
-        
+        .refreshable {
+            marketsVM.fetchCoins(amount: marketsVM.coins.count)
+        }
     }
 }
 
 #Preview {
     NavigationStack {
         CoinsListView()
-            .environmentObject(MarketsViewModel(forPreviews: PreviewsMockData.COINS))
+            .environmentObject(CoinsListViewModel(forPreviews: PreviewsMockData.COINS))
     }
 }

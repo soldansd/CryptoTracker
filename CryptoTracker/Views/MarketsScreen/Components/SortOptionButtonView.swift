@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SortOptionButtonView: View {
     
-    @EnvironmentObject var marketsVM: MarketsViewModel
+    @EnvironmentObject var marketsVM: CoinsListViewModel
     let title: String
-    let options: (asc: MarketsViewModel.SortOption, desc: MarketsViewModel.SortOption)
+    let options: (asc: CoinsListViewModel.SortOption, desc: CoinsListViewModel.SortOption)
    
     var body: some View {
         Button {
@@ -37,5 +37,5 @@ struct SortOptionButtonView: View {
         title: "Market Cap",
         options: (asc: .marketCapAscending, desc: .marketCapDescending)
     )
-    .environmentObject(MarketsViewModel(forPreviews: PreviewsMockData.COINS))
+    .environmentObject(CoinsListViewModel(forPreviews: PreviewsMockData.COINS))
 }

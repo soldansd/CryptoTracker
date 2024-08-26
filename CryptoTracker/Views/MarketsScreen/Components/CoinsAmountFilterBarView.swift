@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CoinsAmountFilterBarView: View {
     
-    @EnvironmentObject var marketsVM: MarketsViewModel
+    @EnvironmentObject var marketsVM: CoinsListViewModel
     @State private var lastTappedButton = 1
-    private var buttonTitles = [50, MarketsViewModel.defaultCoinsAmount, 150, 200, 250]
+    private var buttonTitles = [50, CoinsListViewModel.defaultCoinsAmount, 150, 200, 250]
     
     var body: some View {
         HStack(spacing: 15) {
@@ -22,7 +22,7 @@ struct CoinsAmountFilterBarView: View {
                 CoinsAmountButtonView(tittle: "\(buttonTitles[index])") {
                     self.lastTappedButton = index
                     marketsVM.fetchCoins(amount: buttonTitles[index])
-                    marketsVM.sortOption = .marketCapDescending
+                    marketsVM.sortCoins()
                 }
                 .opacity(lastTappedButton == index ? 1.0 : 0.4)
             }
@@ -37,5 +37,5 @@ struct CoinsAmountFilterBarView: View {
 
 #Preview {
     CoinsAmountFilterBarView()
-        .environmentObject(MarketsViewModel(forPreviews: PreviewsMockData.COINS))
+        .environmentObject(CoinsListViewModel(forPreviews: PreviewsMockData.COINS))
 }

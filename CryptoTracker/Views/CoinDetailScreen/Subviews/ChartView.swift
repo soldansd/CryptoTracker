@@ -46,5 +46,5 @@ struct ChartView: View {
 }
 
 #Preview {
-    ChartView(data: [1,3,4, 0.6, 3])
+    ChartView(data: [1, 3, 4, 0.6, 3])
 }

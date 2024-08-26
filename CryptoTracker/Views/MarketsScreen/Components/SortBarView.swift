@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SortBarView: View {
     
-    @EnvironmentObject var marketsVM: MarketsViewModel
+    @EnvironmentObject var marketsVM: CoinsListViewModel
     
     var body: some View {
         HStack {
@@ -47,5 +47,5 @@ struct SortBarView: View {
 
 #Preview {
     SortBarView()
-        .environmentObject(MarketsViewModel(forPreviews: PreviewsMockData.COINS))
+        .environmentObject(CoinsListViewModel(forPreviews: PreviewsMockData.COINS))
 }

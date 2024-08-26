@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct MarketDataPanelView: View {
-    @EnvironmentObject var marketsVM: MarketsViewModel
+    @StateObject var marketDataVM = MarketDataViewModel()
     
     var body: some View {
-        
         HStack(alignment: .top, spacing: 20) {
-            
             VStack(alignment: .leading, spacing: 5) {
                 MarketDataICellHeaderView(
                     title: "Market Cap",
-                    value: marketsVM.marketData?.totalMarketCap["usd"]?.toAbbreviationString() ?? "—"
+                    value: marketDataVM.marketData?.totalMarketCap["usd"]?.toAbbreviationString() ?? "—"
                 )
                 
-                PercentageView(percentage: marketsVM.marketData?.marketCapChangePercentage24HUsd ?? 0)
+                PercentageView(percentage: marketDataVM.marketData?.marketCapChangePercentage24HUsd ?? 0)
             }
             
             Rectangle()
@@ -29,7 +27,7 @@ struct MarketDataPanelView: View {
             
             MarketDataICellHeaderView(
                 title: "Volume",
-                value: marketsVM.marketData?.totalVolume["usd"]?.toAbbreviationString() ?? "—"
+                value: marketDataVM.marketData?.totalVolume["usd"]?.toAbbreviationString() ?? "—"
             )
             
             Rectangle()
@@ -37,7 +35,7 @@ struct MarketDataPanelView: View {
                 .frame(width: 1)
             
             VStack(alignment: .leading, spacing: 8) {
-                MarketDataICellHeaderView(title: "Dominance", value: marketsVM.marketData?.marketCapPercentage["btc"]?.toPercentString() ?? "—")
+                MarketDataICellHeaderView(title: "Dominance", value: marketDataVM.marketData?.marketCapPercentage["btc"]?.toPercentString() ?? "—")
                 
                 HStack {
                     Image("bitcoinIcon")
@@ -49,10 +47,10 @@ struct MarketDataPanelView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-
         }
         .padding()
         .frame(height: 100)
+        .frame(maxWidth: .infinity)
         .background(.regularMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .padding(8)
@@ -60,6 +58,5 @@ struct MarketDataPanelView: View {
 }
 
 #Preview {
-    MarketDataPanelView()
-        .environmentObject(MarketsViewModel(forPreviews: PreviewsMockData.COINS))
+    MarketDataPanelView(marketDataVM: MarketDataViewModel(forPreviews: nil))
 }

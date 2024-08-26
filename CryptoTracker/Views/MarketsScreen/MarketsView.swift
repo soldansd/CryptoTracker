@@ -9,19 +9,18 @@ import SwiftUI
 
 struct MarketsView: View {
     
-    @StateObject var marketsVM = MarketsViewModel()
+    @StateObject var marketsVM = CoinsListViewModel()
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                MarketDataPanelView()
-                CoinsListView()
-            }
-            .environmentObject(marketsVM)
+        VStack {
+            MarketDataPanelView()
+            CoinsListView()
         }
+        .environmentObject(marketsVM)
+        .navigationTitle("Markets")
     }
 }
 
 #Preview {
-    MarketsView(marketsVM: MarketsViewModel(forPreviews: PreviewsMockData.COINS))
+    MarketsView(marketsVM: CoinsListViewModel(forPreviews: PreviewsMockData.COINS))
 }

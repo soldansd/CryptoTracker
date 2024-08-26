@@ -68,6 +68,23 @@ final class NetworkManager {
         }
     }
     
+    func getCoinsForSearch(completionHandler: @escaping ([CoinSearch]) -> Void) {
+        let urlString = "https://api.coingecko.com/api/v3/coins/list?x_cg_demo_api_key=\(APICredentials.API_KEY)"
+        
+        getRequest(urlString: urlString) { (result: Result<[CoinSearch], Error>) in
+            switch result {
+            case .success(let success):
+                completionHandler(success)
+            case .failure(let failure as NetworkError):
+                print("DEBUG:" + failure.description + " in getCoinsForSearch")
+                completionHandler([])
+            case .failure(let failure):
+                print("DEBUG: \(failure) in getCoinsForSearch")
+                completionHandler([])
+            }
+        }
+    }
+    
     private func getRequest<T: Decodable>(urlString: String, completionHandler: @escaping (Result<T, Error>) -> Void) {
         guard let url = URL(string: urlString) else {
             completionHandler(.failure(NetworkError.badURL))

@@ -11,7 +11,19 @@ import SwiftUI
 struct CryptoTrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            MarketsView()
+            NavigationStack {
+                TabView {
+                    MarketsView()
+                        .tabItem {
+                            Image(systemName: "bitcoinsign.circle")
+                        }
+                    
+                    SearchBarView()
+                        .tabItem {
+                            Image(systemName: "magnifyingglass.circle")
+                        }
+                }
+            }
         }
     }
 }

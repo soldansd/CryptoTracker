@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CoinDetailViewModel: ObservableObject {
+final class CoinDetailViewModel: ObservableObject {
     
     @Published var coinDetail: CoinDetail?
     

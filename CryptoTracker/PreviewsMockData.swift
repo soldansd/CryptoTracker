@@ -16,24 +16,7 @@ enum PreviewsMockData {
         currentPrice: 70187,
         marketCapRank: 1,
         marketCap: 1381651251183,
-        priceChangePercentage24H: 300.05,
-        priceChange24H: nil,
-        fullyDilutedValuation: nil,
-        totalVolume: nil,
-        high24H: nil,
-        low24H: nil,
-        marketCapChange24H: nil,
-        marketCapChangePercentage24H: nil,
-        circulatingSupply: nil,
-        totalSupply: nil,
-        maxSupply: nil,
-        ath: nil,
-        athChangePercentage: nil,
-        athDate: nil,
-        atl: nil,
-        atlChangePercentage: nil,
-        atlDate: nil,
-        lastUpdated: nil
+        priceChangePercentage24H: 300.05
     )
     
     static let COIN_DETAIL = CoinDetail(
@@ -107,24 +90,7 @@ enum PreviewsMockData {
             currentPrice: 2634.47,
             marketCapRank: 2,
             marketCap: 316874133631,
-            priceChangePercentage24H: -1.76,
-            priceChange24H: nil,
-            fullyDilutedValuation: nil,
-            totalVolume: nil,
-            high24H: nil,
-            low24H: nil,
-            marketCapChange24H: nil,
-            marketCapChangePercentage24H: nil,
-            circulatingSupply: nil,
-            totalSupply: nil,
-            maxSupply: nil,
-            ath: nil,
-            athChangePercentage: nil,
-            athDate: nil,
-            atl: nil,
-            atlChangePercentage: nil,
-            atlDate: nil,
-            lastUpdated: nil
+            priceChangePercentage24H: -1.76
         ),
         Coin(
             id: "tether",
@@ -134,24 +100,25 @@ enum PreviewsMockData {
             currentPrice: 0.99964148,
             marketCapRank: 3,
             marketCap: 117352549688,
-            priceChangePercentage24H: 0.00,
-            priceChange24H: nil,
-            fullyDilutedValuation: nil,
-            totalVolume: nil,
-            high24H: nil,
-            low24H: nil,
-            marketCapChange24H: nil,
-            marketCapChangePercentage24H: nil,
-            circulatingSupply: nil,
-            totalSupply: nil,
-            maxSupply: nil,
-            ath: nil,
-            athChangePercentage: nil,
-            athDate: nil,
-            atl: nil,
-            atlChangePercentage: nil,
-            atlDate: nil,
-            lastUpdated: nil
+            priceChangePercentage24H: 0.00
+        )
+    ]
+    
+    static let COIN_SEARCH = [
+        CoinSearch(
+            id: "bitcoin",
+            symbol: "btc",
+            name: "Bitcoin"
+        ),
+        CoinSearch(
+            id: "ethereum",
+            symbol: "eth",
+            name: "Ethereum"
+        ),
+        CoinSearch(
+            id: "tether",
+            symbol: "usdt",
+            name: "Tether"
         )
     ]
 }
