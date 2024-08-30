@@ -14,7 +14,7 @@ struct ButtonWithSheetView<Content: View>: View {
     @State private var showSheet = false
     
     var body: some View {
-        CoinsAmountButtonView(title: title) {
+        CustomButtonView(title: title) {
             showSheet = true
         }
         .sheet(isPresented: $showSheet) {

@@ -19,7 +19,7 @@ struct CoinsAmountFilterBarView: View {
                 .font(.headline)
             
             ForEach(buttonTitles.indices, id: \.self) { index in
-                CoinsAmountButtonView(title: "\(buttonTitles[index])") {
+                CustomButtonView(title: "\(buttonTitles[index])") {
                     self.lastTappedButton = index
                     coinsListVM.fetchCoins(amount: buttonTitles[index])
                 }

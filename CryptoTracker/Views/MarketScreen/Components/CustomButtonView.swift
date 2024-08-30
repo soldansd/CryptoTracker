@@ -1,5 +1,5 @@
 //
-//  CoinsAmountButtonView.swift
+//  CustomButtonView.swift
 //  CryptoTracker
 //
 //  Created by Даниил Соловьев on 22/08/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CoinsAmountButtonView: View {
+struct CustomButtonView: View {
     
     let title: String
     let action: () -> ()
@@ -28,6 +28,6 @@ struct CoinsAmountButtonView: View {
 
 #Preview {
     HStack {
-        CoinsAmountButtonView(title: "100", action: {})
+        CustomButtonView(title: "100", action: {})
     }
 }

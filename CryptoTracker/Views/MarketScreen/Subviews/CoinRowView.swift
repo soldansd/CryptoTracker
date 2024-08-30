@@ -21,7 +21,7 @@ struct CoinRowView: View {
             CoinLogoImageView(urlString: coin.image)
                 .frame(width: 30, height: 30)
             
-            CapitalizationView(
+            ShortCoinTitleView(
                 title: coin.symbol.uppercased(),
                 amount: coin.marketCap.toAbbreviationString()
             )

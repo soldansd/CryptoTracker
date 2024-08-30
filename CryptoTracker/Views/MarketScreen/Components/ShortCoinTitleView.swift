@@ -1,5 +1,5 @@
 //
-//  CapitalizationView.swift
+//  ShortCoinTitleView.swift
 //  CryptoTracker
 //
 //  Created by Даниил Соловьев on 28/08/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CapitalizationView: View {
+struct ShortCoinTitleView: View {
     
     let title: String
     let amount: String
@@ -25,5 +25,5 @@ struct CapitalizationView: View {
 }
 
 #Preview {
-    CapitalizationView(title: "BTC", amount: "1.4T $")
+    ShortCoinTitleView(title: "BTC", amount: "1.4T $")
 }

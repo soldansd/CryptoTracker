@@ -16,7 +16,7 @@ struct PortfolioCoinRowView: View {
             CoinLogoImageView(urlString: coin.image)
                 .frame(width: 34, height: 34)
             
-            CapitalizationView(
+            ShortCoinTitleView(
                 title: coin.name,
                 amount: coin.symbol.uppercased(),
                 spacing: 10
