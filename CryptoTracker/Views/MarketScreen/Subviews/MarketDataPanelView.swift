@@ -35,7 +35,10 @@ struct MarketDataPanelView: View {
                 .frame(width: 1)
             
             VStack(alignment: .leading, spacing: 8) {
-                MarketDataICellHeaderView(title: "Dominance", value: marketDataVM.marketData?.marketCapPercentage["btc"]?.toPercentString() ?? "—")
+                MarketDataICellHeaderView(
+                    title: "Dominance",
+                    value: marketDataVM.marketData?.marketCapPercentage["btc"]?.toPercentString(withPlusSign: false) ?? "—"
+                )
                 
                 HStack {
                     Image("bitcoinIcon")

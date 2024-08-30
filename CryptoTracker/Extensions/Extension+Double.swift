@@ -17,9 +17,14 @@ extension Double {
         return NumberFormatter.priceFormatter.string(for: self) ?? "—"
     }
     
-    func toPercentString() -> String {
-        guard let str = NumberFormatter.percentFormatter.string(for: self) else { return "—" }
-        return (str.first == "-" ? str : "+" + str) + " %"
+    func toPercentString(withPlusSign: Bool = false) -> String {
+        guard var str = NumberFormatter.percentFormatter.string(for: self) else { return "—" }
+        
+        if str.first != "-", withPlusSign {
+            str.insert("+", at: str.startIndex)
+        }
+        
+        return str + " %"
     }
     
     func toAbbreviationString(withCurency: Bool = true) -> String {
