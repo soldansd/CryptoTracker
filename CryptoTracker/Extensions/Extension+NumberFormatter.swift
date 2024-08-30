@@ -22,7 +22,6 @@ extension NumberFormatter {
         return formater
     }()
     
-    
     private static func createPriceFormetter(isShort: Bool = false) -> NumberFormatter {
         let formater = NumberFormatter()
         formater.usesGroupingSeparator = true

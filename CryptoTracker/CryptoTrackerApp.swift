@@ -15,27 +15,25 @@ struct CryptoTrackerApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                MarketsView()
-                    .environmentObject(portfolioVM)
+                MarketView()
                     .tabItem {
                         Image(systemName: "bitcoinsign.circle")
                         Text("Market")
                     }
                 
                 SearchBarView()
-                    .environmentObject(portfolioVM)
                     .tabItem {
                         Image(systemName: "magnifyingglass.circle")
                         Text("Search")
                     }
                 
                 PortfolioView()
-                    .environmentObject(portfolioVM)
                     .tabItem {
                         Image(systemName: "chart.pie")
                         Text("Portfolio")
                     }
             }
+            .environmentObject(portfolioVM)
         }
     }
 }

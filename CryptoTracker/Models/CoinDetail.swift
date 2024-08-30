@@ -7,7 +7,9 @@
 
 import Foundation
 
+// MARK: - This model is used to display a detail coin's screen
 struct CoinDetail: Decodable {
+    
     let id, symbol, name: String
     let blockTimeInMinutes: Int
     let hashingAlgorithm: String?

@@ -20,7 +20,6 @@ final class CoinsListViewModel: ObservableObject {
     }
     
     init() {
-        print("Coins List init")
         fetchCoins(amount: CoinsListViewModel.defaultCoinsAmount)
     }
     
@@ -39,6 +38,7 @@ final class CoinsListViewModel: ObservableObject {
         NetworkManager.shared.getCoinsList(amount: amount) { coins in
             DispatchQueue.main.async {
                 self.coins = coins
+                self.sortCoins()
             }
         }
     }

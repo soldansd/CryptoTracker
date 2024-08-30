@@ -30,7 +30,6 @@ struct CoinDetailView: View {
                         BuyCoinButtonView(coin: coinDetail)
                     }
                     
-                    
                     LineChartView(
                         data: coinDetailVM.coinDetail?.sparkline7D ?? []
                     )

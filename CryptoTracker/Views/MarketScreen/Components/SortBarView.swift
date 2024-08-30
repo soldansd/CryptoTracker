@@ -9,11 +9,8 @@ import SwiftUI
 
 struct SortBarView: View {
     
-    @EnvironmentObject var marketsVM: CoinsListViewModel
-    
     var body: some View {
         HStack {
-            
             SortOptionButtonView(
                 title: "#",
                 options: (asc: .marketCapRankAscending, desc: .marketCapRankDescending)

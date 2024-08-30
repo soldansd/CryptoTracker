@@ -7,15 +7,12 @@
 
 import SwiftUI
 
-struct MarketsView: View {
-    
-    @StateObject var marketsVM = CoinsListViewModel()
+struct MarketView: View {
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 8) {
-                
-                Text("Markets")
+                Text("Market")
                     .headerFont()
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading)
@@ -24,11 +21,10 @@ struct MarketsView: View {
                 
                 CoinsListView()
             }
-            .environmentObject(marketsVM)
         }
     }
 }
 
 #Preview {
-    MarketsView(marketsVM: CoinsListViewModel(forPreviews: PreviewsMockData.COINS))
+    MarketView()
 }

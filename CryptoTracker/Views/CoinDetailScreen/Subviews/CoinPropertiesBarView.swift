@@ -22,6 +22,11 @@ struct CoinPropertiesBarView: View {
         "Hashing Algorithm"
     ]
     
+    private let rows = Array(
+        repeating: GridItem(.flexible(minimum: 50, maximum: 150) ,alignment: .leading),
+        count: 2
+    )
+    
     init(coinDetail: CoinDetail) {
         coinPropertiesValues = [ 
             coinDetail.marketCap["usd"]?.toAbbreviationString() ?? "—",
@@ -37,7 +42,7 @@ struct CoinPropertiesBarView: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHGrid(rows: Array(repeating: GridItem(.flexible(minimum: 50, maximum: 150) ,alignment: .leading), count: 2), spacing: 12) {
+            LazyHGrid(rows: rows, spacing: 12) {
                 ForEach(coinPropertiesTitles.indices, id: \.self) { index in
                     CoinPropertyView(title: coinPropertiesTitles[index], value: coinPropertiesValues[index])
                         .padding(.vertical, 4)

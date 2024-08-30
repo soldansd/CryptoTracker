@@ -7,7 +7,9 @@
 
 import Foundation
 
+// MARK: - This model is used to display current market data. Such as market cap, volume, bitcoin dominance
 struct MarketData: Decodable {
+    
     let totalMarketCap, totalVolume, marketCapPercentage: [String: Double]
     let marketCapChangePercentage24HUsd: Double
     

@@ -12,7 +12,6 @@ final class MarketDataViewModel: ObservableObject {
     @Published var marketData: MarketData?
     
     init() {
-        print("Market init")
         fetchMarketData()
     }
     

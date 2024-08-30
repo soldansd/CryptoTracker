@@ -12,19 +12,15 @@ struct PortfolioCoinRowView: View {
     let coin: Coin
     
     var body: some View {
-        
         HStack {
+            CoinLogoImageView(urlString: coin.image)
+                .frame(width: 34, height: 34)
             
-            HStack {
-                CoinLogoImageView(urlString: coin.image)
-                    .frame(width: 34, height: 34)
-                
-                CapitalizationView(
-                    title: coin.name,
-                    amount: coin.symbol.uppercased(),
-                    spacing: 10
-                )
-            }
+            CapitalizationView(
+                title: coin.name,
+                amount: coin.symbol.uppercased(),
+                spacing: 10
+            )
             
             Spacer()
             
@@ -43,10 +39,8 @@ struct PortfolioCoinRowView: View {
                     Text(coin.symbol.uppercased())
                         .foregroundStyle(.secondary)
                 }
-                
             }
             .frame(width: 120, alignment: .trailing)
-            
         }
         .frame(maxWidth: .infinity)
         .padding(8)

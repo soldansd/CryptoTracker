@@ -11,7 +11,6 @@ struct EmptyPortfolioView: View {
     
     var body: some View {
         VStack(spacing: 30) {
-            
             Image(systemName: "person.crop.circle")
                 .resizable()
                 .scaledToFit()

@@ -12,7 +12,6 @@ struct CoinRowView: View {
     let coin: Coin
     
     var body: some View {
-        
         HStack {
             Text("\(coin.marketCapRank)")
                 .frame(width: 35, alignment: .leading)

@@ -7,7 +7,9 @@
 
 import Foundation
 
+// MARK: - This model is used for displaying data in row of coins' list
 struct Coin: Decodable, Identifiable {
+    
     let id, symbol, name: String
     let image: String
     let currentPrice: Double

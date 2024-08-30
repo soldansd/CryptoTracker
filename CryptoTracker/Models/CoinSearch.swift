@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - This model is used to get all available coins from API and search a particular coin
 struct CoinSearch: Identifiable, Decodable {
     let id: String
     let symbol: String

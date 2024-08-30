@@ -15,6 +15,7 @@ final class NetworkManager {
     
     private init() {}
     
+    // MARK: Method returns a list of the top coins based on market cap
     func getCoinsList(amount: Int, completionHandler: @escaping ([Coin]) -> Void) {
         
         let queryParameters = [
@@ -26,6 +27,7 @@ final class NetworkManager {
         getCoins(queryParameters: queryParameters, completionHandler: completionHandler)
     }
     
+    // MARK: Method returns a list of coins based on given ids of coins
     func getPortfolio(ids: [String], completionHandler: @escaping ([Coin]) -> Void) {
         
         let queryParameters = [
@@ -37,6 +39,7 @@ final class NetworkManager {
         getCoins(queryParameters: queryParameters, completionHandler: completionHandler)
     }
     
+    // MARK: Method returns a list of coins based on query parameters
     private func getCoins(queryParameters: [URLQueryItem]? = nil, completionHandler: @escaping ([Coin]) -> Void) {
         let urlString = baseURL + "/coins/markets"
        
@@ -54,6 +57,7 @@ final class NetworkManager {
         }
     }
     
+    // MARK: Method returns current maket data
     func getMarketData(completionHandler: @escaping (MarketData?) -> () ) {
         
         let urlString = baseURL + "/global"
@@ -73,6 +77,7 @@ final class NetworkManager {
         }
     }
     
+    // MARK: Method returns coin with detail information about it
     func getCoinDetail(id: String, completionHandler: @escaping (CoinDetail?) -> Void) {
         
         let urlString = baseURL + "/coins/\(id)"
@@ -100,6 +105,7 @@ final class NetworkManager {
         }
     }
     
+    // MARK: Method returns all coins available from API
     func getCoinsForSearch(completionHandler: @escaping ([CoinSearch]) -> Void) {
         
         let urlString = baseURL + "/coins/list"
@@ -119,6 +125,7 @@ final class NetworkManager {
         }
     }
     
+    // MARK: This is a generic GET request with query parameters
     private func getRequest<T: Decodable>(urlString: String, queryParameters: [URLQueryItem]? = nil, completionHandler: @escaping (Result<T, Error>) -> Void) {
         
         var components = URLComponents(string: urlString)

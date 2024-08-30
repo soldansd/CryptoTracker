@@ -9,14 +9,9 @@ import Foundation
 
 class PortfolioViewModel: ObservableObject {
     
-    @Published var coins: [Coin] = [] {
-        didSet {
-            print(coins)
-        }
-    }
+    @Published var coins: [Coin] = []
     
     init() {
-        print("Portfolio init")
         fetchCoins()
     }
     

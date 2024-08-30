@@ -10,8 +10,11 @@ import Foundation
 final class CoinsSearchViewModel: ObservableObject {
     
     @Published var searchText = ""
+    
+    // All coin available from API
     private var coinsFetched: [CoinSearch] = []
     
+    // Array of coins matching the search query
     var coinsFiltered: [CoinSearch] {
         let searchTextLowercased = searchText.lowercased().trimmingCharacters(in: .whitespaces)
         
@@ -23,7 +26,6 @@ final class CoinsSearchViewModel: ObservableObject {
     }
     
     init() {
-        print("Search init")
         fetchCoins()
     }
     

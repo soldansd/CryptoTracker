@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SortOptionButtonView: View {
     
-    @EnvironmentObject var marketsVM: CoinsListViewModel
+    @EnvironmentObject var coinsListVM: CoinsListViewModel
     let title: String
     let options: (asc: CoinsListViewModel.SortOption, desc: CoinsListViewModel.SortOption)
    
     var body: some View {
         Button {
             withAnimation(.smooth) {
-                marketsVM.sortOption = (marketsVM.sortOption == options.desc) ? options.asc : options.desc
+                coinsListVM.sortOption = (coinsListVM.sortOption == options.desc) ? options.asc : options.desc
             }
         } label: {
             HStack(spacing: 3) {
@@ -24,8 +24,8 @@ struct SortOptionButtonView: View {
                     
                 Image(systemName: "chevron.down")
                     .imageScale(.small)
-                    .opacity((marketsVM.sortOption == options.desc || marketsVM.sortOption == options.asc) ? 1.0 : 0.0)
-                    .rotationEffect(Angle(degrees: marketsVM.sortOption == options.desc ? 0 : 180))
+                    .opacity((coinsListVM.sortOption == options.desc || coinsListVM.sortOption == options.asc) ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: coinsListVM.sortOption == options.desc ? 0 : 180))
             }
             
         }
