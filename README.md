@@ -2,6 +2,14 @@
 
 Crypto App is an iOS application that allows users to stay updated with the latest cryptocurrency market data. The app provides a comprehensive list of features including viewing market data, managing a personalized portfolio, and in-depth analysis of individual coins.
 
+<details>
+    <summary>Screen video of the app</summary>
+    <video width="320" controls>
+        <source src="ScreenVideo/ScreenVideo.mov">
+    Your browser does not support the video tag.
+</video>
+</details>
+
 ## Features 🚀
 
 - **Market Overview**: View current market data, including market cap, total volume, and Bitcoin dominance.
