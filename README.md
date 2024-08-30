@@ -20,6 +20,8 @@ Crypto App is an iOS application that allows users to stay updated with the late
     <summary>Screenshots of sorting the list and selecting the number of coins</summary>
     <img src="Screenshots/CoinsListDark.png" alt="CoinsListDark" width="320" />
     <img src="Screenshots/CoinsListLight.png" alt="CoinsListLight" width="320" />
+    <img src="Screenshots/CoinsListDark2.png" alt="CoinsListDark" width="320" />
+    <img src="Screenshots/CoinsListLight2.png" alt="CoinsListLight" width="320" />
 </details>
 
 - **Search Functionality**: Quickly search and find a specific cryptocurrency by name or symbol.
@@ -42,8 +44,8 @@ Crypto App is an iOS application that allows users to stay updated with the late
     <img src="Screenshots/CoinDetailLight2.png" alt="CoinDetailLight2" width="320" />
     <img src="Screenshots/BuyCoinDark.png" alt="BuyCoinDark" width="320" />
     <img src="Screenshots/BuyCoinLight.png" alt="BuyCoinLight" width="320" />
-    <img src="Screenshots/SellCoinDark.png" alt="SellCoinDark" width="320" />
     <img src="Screenshots/SellCoinLight.png" alt="SellCoinLight" width="320" />
+    <img src="Screenshots/SellCoinDark.png" alt="SellCoinDark" width="320" />
     <img src="Screenshots/LoadingDark.png" alt="LoadingDark" width="320" />
     <img src="Screenshots/LoadingLight.png" alt="LoadingLight" width="320" />
 </details>
