@@ -26,7 +26,7 @@ Crypto App is an iOS application that allows users to stay updated with the late
 
 <details>
     <summary>Screenshots of search view</summary>
-    <img src="Screenshots/SearchBarWithDataLight.png" alt="SearchBarWithDataLight" width="320" />
+    <img src="Screenshots/SearchBarEmptyLight.png" alt="SearchBarWithDataLight" width="320" />
     <img src="Screenshots/SearchBarEmptyDark.png" alt="SearchBarEmptyDark" width="320" />
     <img src="Screenshots/SearchBarWithDataDark.png" alt="SearchBarWithDataDark" width="320" />
     <img src="Screenshots/SearchResultDark.png" alt="SearchResultDark" width="320" />
@@ -40,6 +40,12 @@ Crypto App is an iOS application that allows users to stay updated with the late
     <img src="Screenshots/CoinDetailDark2.png" alt="CoinDetailDark2" width="320" />
     <img src="Screenshots/CoinDetailLight.png" alt="CoinDetailLight" width="320" />
     <img src="Screenshots/CoinDetailLight2.png" alt="CoinDetailLight2" width="320" />
+    <img src="Screenshots/BuyCoinDark.png" alt="BuyCoinDark" width="320" />
+    <img src="Screenshots/BuyCoinLight.png" alt="BuyCoinLight" width="320" />
+    <img src="Screenshots/SellCoinDark.png" alt="SellCoinDark" width="320" />
+    <img src="Screenshots/SellCoinLight.png" alt="SellCoinLight" width="320" />
+    <img src="Screenshots/LoadingDark.png" alt="LoadingDark" width="320" />
+    <img src="Screenshots/LoadingLight.png" alt="LoadingLight" width="320" />
 </details>
 
 - **Portfolio Management**: Add and remove coins from your personalized portfolio.
@@ -47,7 +53,9 @@ Crypto App is an iOS application that allows users to stay updated with the late
 <details>
     <summary>Screenshots of portfolio view</summary>
     <img src="Screenshots/PortfolioDark.png" alt="PortfolioDark" width="320" />
-    <img src="Screenshots/PortfolioLightt.png" alt="PortfolioLight" width="320" />
+    <img src="Screenshots/PortfolioLight.png" alt="PortfolioLight" width="320" />
+    <img src="Screenshots/PortfolioEmptyDark.png" alt="PortfolioEmptyDark" width="320" />
+    <img src="Screenshots/PortfolioEmptyLight.png" alt="PortfolioEmptyLight" width="320" />
 </details>
 
 ## Technologies Used 🌐
