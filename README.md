@@ -5,7 +5,7 @@ Crypto App is an iOS application that allows users to stay updated with the late
 <details>
     <summary>Screen video of the app</summary>
     <video width="320" controls>
-        <source src="ScreenVideo/ScreenVideo.mov">
+        <source src="ScreenVideo/ScreenVideo.mov" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 </details>
