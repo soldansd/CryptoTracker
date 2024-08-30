@@ -21,7 +21,6 @@ struct CoinPropertyView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.regularMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        
     }
 }
 

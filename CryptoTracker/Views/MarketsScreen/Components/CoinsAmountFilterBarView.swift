@@ -19,7 +19,7 @@ struct CoinsAmountFilterBarView: View {
                 .font(.headline)
             
             ForEach(buttonTitles.indices, id: \.self) { index in
-                CoinsAmountButtonView(tittle: "\(buttonTitles[index])") {
+                CoinsAmountButtonView(title: "\(buttonTitles[index])") {
                     self.lastTappedButton = index
                     marketsVM.fetchCoins(amount: buttonTitles[index])
                     marketsVM.sortCoins()

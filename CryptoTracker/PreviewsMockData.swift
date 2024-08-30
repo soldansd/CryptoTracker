@@ -16,7 +16,8 @@ enum PreviewsMockData {
         currentPrice: 70187,
         marketCapRank: 1,
         marketCap: 1381651251183,
-        priceChangePercentage24H: 300.05
+        priceChangePercentage24H: 300.05,
+        portfolioAmount: 0.02
     )
     
     static let COIN_DETAIL = CoinDetail(
@@ -90,7 +91,8 @@ enum PreviewsMockData {
             currentPrice: 2634.47,
             marketCapRank: 2,
             marketCap: 316874133631,
-            priceChangePercentage24H: -1.76
+            priceChangePercentage24H: -1.76,
+            portfolioAmount: 1
         ),
         Coin(
             id: "tether",
@@ -100,7 +102,8 @@ enum PreviewsMockData {
             currentPrice: 0.99964148,
             marketCapRank: 3,
             marketCap: 117352549688,
-            priceChangePercentage24H: 0.00
+            priceChangePercentage24H: 0.00,
+            portfolioAmount: 1000
         )
     ]
     

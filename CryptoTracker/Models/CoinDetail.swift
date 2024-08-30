@@ -12,7 +12,7 @@ struct CoinDetail: Decodable {
     let blockTimeInMinutes: Int
     let hashingAlgorithm: String?
     let description: Description
-    let links: Links
+    let links: Links?
     let image: ImageURLString
     let detailData: CoinDetailData
 
@@ -33,7 +33,7 @@ struct CoinDetail: Decodable {
     }
 
     struct Links: Decodable {
-        let whitepaper: String
+        let whitepaper: String?
     }
 
     struct CoinDetailData: Decodable {
@@ -41,7 +41,7 @@ struct CoinDetail: Decodable {
         let ath: [String: Double]
         let atl: [String: Double]
         let marketCap: [String: Double]
-        let marketCapRank: Int
+        let marketCapRank: Int?
         let totalVolume, high24H, low24H: [String: Double]
         let priceChangePercentage24H, priceChangePercentage7D, priceChangePercentage30D: Double
         let priceChangePercentage60D, priceChangePercentage1Y: Double

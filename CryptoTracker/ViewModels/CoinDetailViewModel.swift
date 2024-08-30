@@ -12,6 +12,7 @@ final class CoinDetailViewModel: ObservableObject {
     @Published var coinDetail: CoinDetail?
     
     init(id: String) {
+        print("Coin Detail init")
         fetchCoinDetail(id: id)
     }
     

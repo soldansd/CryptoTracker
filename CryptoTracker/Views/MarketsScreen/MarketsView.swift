@@ -12,12 +12,20 @@ struct MarketsView: View {
     @StateObject var marketsVM = CoinsListViewModel()
     
     var body: some View {
-        VStack {
-            MarketDataPanelView()
-            CoinsListView()
+        NavigationStack {
+            VStack(spacing: 8) {
+                
+                Text("Markets")
+                    .headerFont()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
+                
+                MarketDataPanelView()
+                
+                CoinsListView()
+            }
+            .environmentObject(marketsVM)
         }
-        .environmentObject(marketsVM)
-        .navigationTitle("Markets")
     }
 }
 

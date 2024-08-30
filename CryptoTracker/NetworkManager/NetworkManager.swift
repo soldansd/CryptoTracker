@@ -17,9 +17,30 @@ final class NetworkManager {
     
     func getCoinsList(amount: Int, completionHandler: @escaping ([Coin]) -> Void) {
         
-        let urlString = baseURL + "/coins/markets?vs_currency=usd&per_page=\(amount)&x_cg_demo_api_key=\(APICredentials.API_KEY)"
+        let queryParameters = [
+            URLQueryItem(name: "vs_currency", value: "usd"),
+            URLQueryItem(name: "per_page", value: "\(amount)"),
+            URLQueryItem(name: "x_cg_demo_api_key", value: "\(APICredentials.API_KEY)")
+        ]
+        
+        getCoins(queryParameters: queryParameters, completionHandler: completionHandler)
+    }
+    
+    func getPortfolio(ids: [String], completionHandler: @escaping ([Coin]) -> Void) {
+        
+        let queryParameters = [
+            URLQueryItem(name: "vs_currency", value: "usd"),
+            URLQueryItem(name: "ids", value: ids.joined(separator: ",")),
+            URLQueryItem(name: "x_cg_demo_api_key", value: "\(APICredentials.API_KEY)")
+        ]
+        
+        getCoins(queryParameters: queryParameters, completionHandler: completionHandler)
+    }
+    
+    private func getCoins(queryParameters: [URLQueryItem]? = nil, completionHandler: @escaping ([Coin]) -> Void) {
+        let urlString = baseURL + "/coins/markets"
        
-        getRequest(urlString: urlString) { (result: Result<[Coin], Error>) in
+        getRequest(urlString: urlString, queryParameters: queryParameters) { (result: Result<[Coin], Error>) in
             switch result {
             case .success(let success):
                 completionHandler(success)
@@ -35,9 +56,10 @@ final class NetworkManager {
     
     func getMarketData(completionHandler: @escaping (Market?) -> () ) {
         
-        let urlString = "https://api.coingecko.com/api/v3/global?x_cg_demo_api_key=\(APICredentials.API_KEY)"
+        let urlString = baseURL + "/global"
+        let queryParameters = [URLQueryItem(name: "x_cg_demo_api_key", value: "\(APICredentials.API_KEY)")]
         
-        getRequest(urlString: urlString) { (result: Result<Market, Error>) in
+        getRequest(urlString: urlString, queryParameters: queryParameters) { (result: Result<Market, Error>) in
             switch result {
             case .success(let success):
                 completionHandler(success)
@@ -52,9 +74,19 @@ final class NetworkManager {
     }
     
     func getCoinDetail(id: String, completionHandler: @escaping (CoinDetail?) -> Void) {
-        let urlString = "https://api.coingecko.com/api/v3/coins/\(id)?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=true&x_cg_demo_api_key=\(APICredentials.API_KEY)"
         
-        getRequest(urlString: urlString) { (result: Result<CoinDetail, Error>) in
+        let urlString = baseURL + "/coins/\(id)"
+        let queryParameters = [
+            URLQueryItem(name: "localization", value: "false"),
+            URLQueryItem(name: "tickers", value: "false"),
+            URLQueryItem(name: "market_data", value: "true"),
+            URLQueryItem(name: "community_data", value: "false"),
+            URLQueryItem(name: "developer_data", value: "false"),
+            URLQueryItem(name: "sparkline", value: "true"),
+            URLQueryItem(name: "x_cg_demo_api_key", value: "\(APICredentials.API_KEY)")
+        ]
+        
+        getRequest(urlString: urlString, queryParameters: queryParameters) { (result: Result<CoinDetail, Error>) in
             switch result {
             case .success(let success):
                 completionHandler(success)
@@ -69,9 +101,11 @@ final class NetworkManager {
     }
     
     func getCoinsForSearch(completionHandler: @escaping ([CoinSearch]) -> Void) {
-        let urlString = "https://api.coingecko.com/api/v3/coins/list?x_cg_demo_api_key=\(APICredentials.API_KEY)"
         
-        getRequest(urlString: urlString) { (result: Result<[CoinSearch], Error>) in
+        let urlString = baseURL + "/coins/list"
+        let queryParameters = [URLQueryItem(name: "x_cg_demo_api_key", value: "\(APICredentials.API_KEY)")]
+        
+        getRequest(urlString: urlString, queryParameters: queryParameters) { (result: Result<[CoinSearch], Error>) in
             switch result {
             case .success(let success):
                 completionHandler(success)
@@ -85,8 +119,12 @@ final class NetworkManager {
         }
     }
     
-    private func getRequest<T: Decodable>(urlString: String, completionHandler: @escaping (Result<T, Error>) -> Void) {
-        guard let url = URL(string: urlString) else {
+    private func getRequest<T: Decodable>(urlString: String, queryParameters: [URLQueryItem]? = nil, completionHandler: @escaping (Result<T, Error>) -> Void) {
+        
+        var components = URLComponents(string: urlString)
+        components?.queryItems = queryParameters
+        
+        guard let url = components?.url else {
             completionHandler(.failure(NetworkError.badURL))
             return
         }

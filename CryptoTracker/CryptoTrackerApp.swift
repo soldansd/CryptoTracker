@@ -9,20 +9,32 @@ import SwiftUI
 
 @main
 struct CryptoTrackerApp: App {
+    
+    @StateObject var portfolioVM = PortfolioViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                TabView {
-                    MarketsView()
-                        .tabItem {
-                            Image(systemName: "bitcoinsign.circle")
-                        }
-                    
-                    SearchBarView()
-                        .tabItem {
-                            Image(systemName: "magnifyingglass.circle")
-                        }
-                }
+            TabView {
+                MarketsView()
+                    .environmentObject(portfolioVM)
+                    .tabItem {
+                        Image(systemName: "bitcoinsign.circle")
+                        Text("Market")
+                    }
+                
+                SearchBarView()
+                    .environmentObject(portfolioVM)
+                    .tabItem {
+                        Image(systemName: "magnifyingglass.circle")
+                        Text("Search")
+                    }
+                
+                PortfolioView()
+                    .environmentObject(portfolioVM)
+                    .tabItem {
+                        Image(systemName: "chart.pie")
+                        Text("Portfolio")
+                    }
             }
         }
     }

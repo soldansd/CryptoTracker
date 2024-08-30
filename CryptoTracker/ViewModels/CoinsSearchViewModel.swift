@@ -13,24 +13,17 @@ final class CoinsSearchViewModel: ObservableObject {
     private var coinsFetched: [CoinSearch] = []
     
     var coinsFiltered: [CoinSearch] {
-        let searchTextLowercased = searchText.lowercased()
-      
+        let searchTextLowercased = searchText.lowercased().trimmingCharacters(in: .whitespaces)
+        
         return coinsFetched.filter { coin in
-            
-            let coinIdLowercased = coin.id.lowercased()
-            let coinNameLowercased = coin.name.lowercased()
-            let coinSymbolLowercased = coin.symbol.lowercased()
-            
-            return  coinIdLowercased.contains(searchTextLowercased) ||
-                    coinNameLowercased.contains(searchTextLowercased) ||
-                    coinSymbolLowercased.contains(searchTextLowercased) ||
-                    searchTextLowercased.contains(coinIdLowercased) ||
-                    searchTextLowercased.contains(coinNameLowercased) ||
-                    searchTextLowercased.contains(coinSymbolLowercased)
+            coin.id.lowercased().contains(searchTextLowercased) ||
+            coin.name.lowercased().contains(searchTextLowercased) ||
+            coin.symbol.lowercased().contains(searchTextLowercased)
         }
     }
     
     init() {
+        print("Search init")
         fetchCoins()
     }
     

@@ -10,6 +10,7 @@ import SwiftUI
 struct CoinDetailView: View {
     
     @StateObject var coinDetailVM: CoinDetailViewModel
+    @EnvironmentObject var portfolioVM: PortfolioViewModel
     
     init(id: String) {
         self._coinDetailVM = StateObject(wrappedValue: CoinDetailViewModel(id: id))
@@ -19,17 +20,20 @@ struct CoinDetailView: View {
         if let coinDetail = coinDetailVM.coinDetail {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 30) {
-                    
-                    CoinDetailTitleView(coinDetail: coinDetail)
-                    
-                    ZStack(alignment: .topTrailing) {
-                        Text("7D")
-                            .foregroundStyle(.secondary)
-                            .offset(y: -25)
-                        ChartView(
-                            data: coinDetailVM.coinDetail?.detailData.sparkline7D.price ?? []
-                        )
+                    HStack {
+                        CoinDetailTitleView(coinDetail: coinDetail)
+                        
+                        if portfolioVM.coins.first(where: {$0.id == coinDetail.id}) != nil {
+                            SellCoinButtonView(coin: coinDetail)
+                        }
+                        
+                        BuyCoinButtonView(coin: coinDetail)
                     }
+                    
+                    
+                    LineChartView(
+                        data: coinDetailVM.coinDetail?.detailData.sparkline7D.price ?? []
+                    )
                     
                     CoinChangePercentageView(coinDetailData: coinDetail.detailData)
                     
@@ -64,6 +68,6 @@ struct CoinDetailView: View {
 #Preview {
     NavigationStack {
         CoinDetailView(id: "ethereum")
+            .environmentObject(PortfolioViewModel(forPreview: PreviewsMockData.COINS))
     }
-   
 }

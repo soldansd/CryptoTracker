@@ -9,8 +9,6 @@ import SwiftUI
 
 struct CoinPropertiesBarView: View {
     
-    let coinDetail: CoinDetail
-    
     private let coinPropertiesValues: [String]
     
     private let coinPropertiesTitles = [
@@ -25,7 +23,6 @@ struct CoinPropertiesBarView: View {
     ]
     
     init(coinDetail: CoinDetail) {
-        self.coinDetail = coinDetail
         coinPropertiesValues = [ 
             coinDetail.detailData.marketCap["usd"]?.toAbbreviationString() ?? "—",
             coinDetail.detailData.totalVolume["usd"]?.toAbbreviationString() ?? "—",

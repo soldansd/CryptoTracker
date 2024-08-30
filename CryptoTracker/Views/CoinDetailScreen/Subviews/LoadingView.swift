@@ -17,9 +17,7 @@ struct LoadingView: View {
                 .scaleEffect(CGSize(width: 1.5, height: 1.5))
                 
             Text(title)
-                .font(.title2)
-                .fontWeight(.bold)
-                .fontDesign(.rounded)
+                .headerFont()
         }
     }
 }

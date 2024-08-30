@@ -13,6 +13,11 @@ struct Coin: Decodable, Identifiable {
     let currentPrice: Double
     let marketCapRank: Int
     let marketCap, priceChangePercentage24H: Double
+    var portfolioAmount: Double?
+    
+    var currentHoldings: Double {
+        (portfolioAmount ?? 0) * currentPrice
+    }
 
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image

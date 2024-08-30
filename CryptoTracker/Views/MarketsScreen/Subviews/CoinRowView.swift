@@ -22,20 +22,14 @@ struct CoinRowView: View {
             CoinLogoImageView(urlString: coin.image)
                 .frame(width: 30, height: 30)
             
-            VStack(alignment: .leading) {
-                Text(coin.symbol.uppercased())
-                    .font(.headline)
-                Text(coin.marketCap.toAbbreviationString())
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
+            CapitalizationView(
+                title: coin.symbol.uppercased(),
+                amount: coin.marketCap.toAbbreviationString()
+            )
             
             Spacer()
             
-            Text(coin.currentPrice.toPriceString())
-                .padding(.trailing, 3)
-                .font(.headline)
-                .lineLimit(1)
+            PriceView(title: coin.currentPrice.toPriceString())
             
             PercentageView(percentage: coin.priceChangePercentage24H)
                 .frame(width: 90, alignment: .trailing)

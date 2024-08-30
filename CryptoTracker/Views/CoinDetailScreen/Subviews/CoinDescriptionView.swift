@@ -20,7 +20,7 @@ struct CoinDescriptionView: View {
                 
                 Spacer()
                 
-                if let url = URL(string: coinDetail.links.whitepaper) {
+                if let whitepaper = coinDetail.links?.whitepaper, let url = URL(string: whitepaper) {
                     Link("Read Whitepaper", destination: url)
                         .font(.headline)
                 }

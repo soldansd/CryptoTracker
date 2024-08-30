@@ -8,20 +8,24 @@
 import SwiftUI
 import Charts
 
-struct ChartView: View {
+struct LineChartView: View {
     
     let data: [Double]
     
     var body: some View {
-        Chart {
-            ForEach(data.indices, id: \.self) { index in
-                LineMark(x: .value("", index), y: .value("Price", data[index]))
+        GroupBox("7 days' chart") {
+            Chart {
+                ForEach(data.indices, id: \.self) { index in
+                    LineMark(x: .value("", index), y: .value("Price", data[index]))
+                }
             }
+            .chartXAxis(.hidden)
+            .chartYScale(domain: minElement...maxElement)
+            .foregroundStyle(chartColor)
+            
         }
-        .chartXAxis(.hidden)
-        .chartYScale(domain: minElement...maxElement)
-        .foregroundStyle(chartColor)
-        .frame(minHeight: 240, maxHeight: 280)
+        .backgroundStyle(.regularMaterial)
+        .frame(minHeight: 260, maxHeight: 300)
     }
     
     private var minElement: Double {
@@ -46,5 +50,5 @@ struct ChartView: View {
 }
 
 #Preview {
-    ChartView(data: [1, 3, 4, 0.6, 3])
+    LineChartView(data: [1, 3, 4, 0.6, 3])
 }

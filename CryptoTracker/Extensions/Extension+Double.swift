@@ -8,6 +8,10 @@
 import Foundation
 
 extension Double {
+    
+    func toPriceShortString() -> String {
+        return NumberFormatter.shortPriceFormatter.string(for: self) ?? "—"
+    }
 
     func toPriceString() -> String {
         return NumberFormatter.priceFormatter.string(for: self) ?? "—"
@@ -18,7 +22,11 @@ extension Double {
         return (str.first == "-" ? str : "+" + str) + " %"
     }
     
-    func toAbbreviationString() -> String {
-        return self.formatted(.number.notation(.compactName)) + " $"
+    func toAbbreviationString(withCurency: Bool = true) -> String {
+        var formattedString = self.formatted(.number.notation(.compactName))
+        if withCurency {
+            formattedString += " $"
+        }
+        return formattedString
     }
 }

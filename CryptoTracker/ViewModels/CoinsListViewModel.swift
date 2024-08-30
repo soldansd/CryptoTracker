@@ -20,6 +20,7 @@ final class CoinsListViewModel: ObservableObject {
     }
     
     init() {
+        print("Coins List init")
         fetchCoins(amount: CoinsListViewModel.defaultCoinsAmount)
     }
     
@@ -45,34 +46,34 @@ final class CoinsListViewModel: ObservableObject {
     func sortCoins() {
         switch sortOption {
         case.marketCapRankDescending:
-            sort(by: \.marketCapRank, order: .descending)
+            sortCoins(by: \.marketCapRank, order: .descending)
         case.marketCapRankAscending:
-            sort(by: \.marketCapRank, order: .ascending)
+            sortCoins(by: \.marketCapRank, order: .ascending)
         case .marketCapDescending:
-            sort(by: \.marketCap, order: .descending)
+            sortCoins(by: \.marketCap, order: .descending)
         case .marketCapAscending:
-            sort(by: \.marketCap, order: .ascending)
+            sortCoins(by: \.marketCap, order: .ascending)
         case .priceDescending:
-            sort(by: \.currentPrice, order: .descending)
+            sortCoins(by: \.currentPrice, order: .descending)
         case .priceAscending:
-            sort(by: \.currentPrice, order: .ascending)
+            sortCoins(by: \.currentPrice, order: .ascending)
         case .priceChangePercentage24HDescending:
-            sort(by: \.priceChangePercentage24H, order: .descending)
+            sortCoins(by: \.priceChangePercentage24H, order: .descending)
         case .priceChangePercentage24HAscending:
-            sort(by: \.priceChangePercentage24H, order: .ascending)
+            sortCoins(by: \.priceChangePercentage24H, order: .ascending)
         }
-        
-        enum SortOrder {
-            case ascending
-            case descending
-        }
-        
-        func sort<Value>(by keyPath: KeyPath<Coin, Value>, order: SortOrder) where Value: Comparable {
-            if case .descending = order {
-                 coins.sort { $0[keyPath: keyPath] > $1[keyPath: keyPath]  }
-            } else {
-                coins.sort { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
-            }
+    }
+    
+    private enum SortOrder {
+        case ascending
+        case descending
+    }
+    
+    private func sortCoins<Value>(by keyPath: KeyPath<Coin, Value>, order: SortOrder) where Value: Comparable {
+        if case .descending = order {
+             coins.sort { $0[keyPath: keyPath] > $1[keyPath: keyPath]  }
+        } else {
+            coins.sort { $0[keyPath: keyPath] < $1[keyPath: keyPath] }
         }
     }
     

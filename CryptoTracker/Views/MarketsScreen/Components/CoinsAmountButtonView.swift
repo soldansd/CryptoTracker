@@ -9,14 +9,14 @@ import SwiftUI
 
 struct CoinsAmountButtonView: View {
     
-    let tittle: String
+    let title: String
     let action: () -> ()
     
     var body: some View {
         Button {
             action()
         } label: {
-            Text(tittle)
+            Text(title)
                 .font(.headline)
                 .padding(8)
                 .background(.gray.opacity(0.45))
@@ -28,6 +28,6 @@ struct CoinsAmountButtonView: View {
 
 #Preview {
     HStack {
-        CoinsAmountButtonView(tittle: "100", action: {})
+        CoinsAmountButtonView(title: "100", action: {})
     }
 }
