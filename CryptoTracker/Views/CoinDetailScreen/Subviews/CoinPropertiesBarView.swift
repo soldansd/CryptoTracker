@@ -24,12 +24,12 @@ struct CoinPropertiesBarView: View {
     
     init(coinDetail: CoinDetail) {
         coinPropertiesValues = [ 
-            coinDetail.detailData.marketCap["usd"]?.toAbbreviationString() ?? "—",
-            coinDetail.detailData.totalVolume["usd"]?.toAbbreviationString() ?? "—",
-            coinDetail.detailData.high24H["usd"]?.toPriceString() ?? "—",
-            coinDetail.detailData.low24H["usd"]?.toPriceString() ?? "—",
-            coinDetail.detailData.ath["usd"]?.toPriceString() ?? "—",
-            coinDetail.detailData.atl["usd"]?.toPriceString() ?? "—",
+            coinDetail.marketCap["usd"]?.toAbbreviationString() ?? "—",
+            coinDetail.totalVolume["usd"]?.toAbbreviationString() ?? "—",
+            coinDetail.high24H["usd"]?.toPriceString() ?? "—",
+            coinDetail.low24H["usd"]?.toPriceString() ?? "—",
+            coinDetail.ath["usd"]?.toPriceString() ?? "—",
+            coinDetail.atl["usd"]?.toPriceString() ?? "—",
             String(coinDetail.blockTimeInMinutes) + " min",
             coinDetail.hashingAlgorithm ?? "—"
         ]

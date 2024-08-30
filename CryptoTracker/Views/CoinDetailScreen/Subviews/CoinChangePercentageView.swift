@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CoinChangePercentageView: View {
     
-    let coinDetailData: CoinDetail.CoinDetailData
+    let coinDetail: CoinDetail
     private let titles: [String] = ["24 hours", "7 days", "30 days", "60 days", "1 year"]
-    private let paths: [KeyPath<CoinDetail.CoinDetailData, Double>] = [
+    private let paths: [KeyPath<CoinDetail, Double>] = [
         \.priceChangePercentage24H, \.priceChangePercentage7D,
         \.priceChangePercentage30D, \.priceChangePercentage60D,
         \.priceChangePercentage1Y
@@ -23,7 +23,7 @@ struct CoinChangePercentageView: View {
                 ForEach(titles.indices, id: \.self) { index in
                     VStack(alignment: .leading) {
                         Text(titles[index])
-                        PercentageView(percentage: coinDetailData[keyPath: paths[index]])
+                        PercentageView(percentage: coinDetail[keyPath: paths[index]])
                     }
                     .padding(.horizontal, 5)
                 }
@@ -36,5 +36,5 @@ struct CoinChangePercentageView: View {
 }
 
 #Preview {
-    CoinChangePercentageView(coinDetailData: PreviewsMockData.COIN_DETAIL.detailData)
+    CoinChangePercentageView(coinDetail: PreviewsMockData.COIN_DETAIL)
 }

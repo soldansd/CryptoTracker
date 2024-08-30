@@ -32,10 +32,10 @@ struct CoinDetailView: View {
                     
                     
                     LineChartView(
-                        data: coinDetailVM.coinDetail?.detailData.sparkline7D.price ?? []
+                        data: coinDetailVM.coinDetail?.sparkline7D ?? []
                     )
                     
-                    CoinChangePercentageView(coinDetailData: coinDetail.detailData)
+                    CoinChangePercentageView(coinDetail: coinDetail)
                     
                     CoinDescriptionView(coinDetail: coinDetail)
                     
@@ -53,7 +53,7 @@ struct CoinDetailView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack {
                         Text(coinDetail.symbol.uppercased())
-                        CoinLogoImageView(urlString: coinDetail.image.small)
+                        CoinLogoImageView(urlString: coinDetail.image)
                             .frame(width: 20, height: 20)
                     }
                 }

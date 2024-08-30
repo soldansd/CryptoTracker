@@ -54,12 +54,12 @@ final class NetworkManager {
         }
     }
     
-    func getMarketData(completionHandler: @escaping (Market?) -> () ) {
+    func getMarketData(completionHandler: @escaping (MarketData?) -> () ) {
         
         let urlString = baseURL + "/global"
         let queryParameters = [URLQueryItem(name: "x_cg_demo_api_key", value: "\(APICredentials.API_KEY)")]
         
-        getRequest(urlString: urlString, queryParameters: queryParameters) { (result: Result<Market, Error>) in
+        getRequest(urlString: urlString, queryParameters: queryParameters) { (result: Result<MarketData, Error>) in
             switch result {
             case .success(let success):
                 completionHandler(success)

@@ -40,7 +40,7 @@ struct BuyCoinSheetView: View {
     }
     
     private var amountToBuy: Double {
-        (inputStringToDouble ?? 0) / (coin.detailData.currentPrice["usd"] ?? 1)
+        (inputStringToDouble ?? 0) / (coin.currentPrice["usd"] ?? 1)
     }
     
     private var inputStringToDouble: Double? {

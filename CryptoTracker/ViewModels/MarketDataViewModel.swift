@@ -9,21 +9,21 @@ import Foundation
 
 final class MarketDataViewModel: ObservableObject {
     
-    @Published var marketData: Market.MarketData?
+    @Published var marketData: MarketData?
     
     init() {
         print("Market init")
         fetchMarketData()
     }
     
-    init(forPreviews: Market.MarketData?) {
+    init(forPreviews: MarketData?) {
         self.marketData = forPreviews
     }
     
     func fetchMarketData() {
-        NetworkManager.shared.getMarketData { market in
+        NetworkManager.shared.getMarketData { marketData in
             DispatchQueue.main.async {
-                self.marketData = market?.data
+                self.marketData = marketData
             }
         }
     }

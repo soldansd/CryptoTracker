@@ -20,14 +20,14 @@ struct CoinDescriptionView: View {
                 
                 Spacer()
                 
-                if let whitepaper = coinDetail.links?.whitepaper, let url = URL(string: whitepaper) {
+                if let whitepaper = coinDetail.whitepaper, let url = URL(string: whitepaper) {
                     Link("Read Whitepaper", destination: url)
                         .font(.headline)
                 }
             }
             .padding(.bottom, 8)
             
-            Text(coinDetail.description.en.removeHTMLLinks())
+            Text(coinDetail.description.removeHTMLLinks())
                 .lineLimit(showFullDescription ? nil : 4)
             
             Button {

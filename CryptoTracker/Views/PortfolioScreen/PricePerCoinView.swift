@@ -13,7 +13,7 @@ struct PricePerCoinView: View {
     
     var body: some View {
         HStack {
-            Text(coin.detailData.currentPrice["usd"]?.toPriceString() ?? "—")
+            Text(coin.currentPrice["usd"]?.toPriceString() ?? "—")
             Text("Per Coin")
         }
     }

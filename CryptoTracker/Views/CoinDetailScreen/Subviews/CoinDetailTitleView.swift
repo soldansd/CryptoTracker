@@ -13,7 +13,7 @@ struct CoinDetailTitleView: View {
     
     var body: some View {
         HStack(alignment: .bottom) {
-            Text("#" + (coinDetail.detailData.marketCapRank?.toString() ?? "—"))
+            Text("#" + (coinDetail.marketCapRank?.toString() ?? "—"))
                 .foregroundStyle(.secondary)
                 .font(.headline)
             
@@ -23,7 +23,7 @@ struct CoinDetailTitleView: View {
                 .fontDesign(.rounded)
                 .offset(y: 4)
             
-            Text(coinDetail.detailData.currentPrice["usd"]?.toPriceString() ?? "—")
+            Text(coinDetail.currentPrice["usd"]?.toPriceString() ?? "—")
                 .fontWeight(.semibold)
             
             Spacer()
