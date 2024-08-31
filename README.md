@@ -1,6 +1,6 @@
 # Crypto Tracker App 📱
 
-Crypto App is an iOS application that allows users to stay updated with the latest cryptocurrency market data. The app provides a comprehensive list of features including viewing market data, managing a personalized portfolio, and in-depth analysis of individual coins.
+Crypto Tracker App is an iOS application that allows users to stay updated with the latest cryptocurrency market data. The app provides a comprehensive list of features including viewing market data, managing a personalized portfolio, and in-depth analysis of individual coins.
 
 https://github.com/user-attachments/assets/484f8e66-fd3c-4967-9fac-1c9c4c18c566
 
